@@ -1,0 +1,25 @@
+﻿@page "/"
+
+@using BindAsynchronousData.Data
+@inject WeatherForecastService http
+
+<SfGrid @ref="DefaultGrid" AllowPaging="true" DataSource="@forecasts" Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Cancel", "Update" })">
+    <GridEditSettings AllowEditing="true" AllowDeleting="true" AllowAdding="true" Mode="@EditMode.Normal"></GridEditSettings>
+    <GridColumns>
+        <GridColumn Field=@nameof(WeatherForecast.OrderID) HeaderText="ID" IsPrimaryKey="true" TextAlign="@TextAlign.Center" Width="140"></GridColumn>
+        <GridColumn Field=@nameof(WeatherForecast.EmployeeID) HeaderText="Postal Code" AllowEditing="true" Type="ColumnType.Number" Width="140" TextAlign="@TextAlign.Right"></GridColumn>
+        <GridColumn Field=@nameof(WeatherForecast.Freight) HeaderText="Freight" EditType="EditType.NumericEdit" Format="C2" Width="140" TextAlign="@TextAlign.Right"></GridColumn>
+        <GridColumn Field=@nameof(WeatherForecast.CustomerID) EditType="EditType.DropDownEdit" HeaderText="Customer Name" Width="150">
+        </GridColumn>
+        <GridColumn Field=@nameof(WeatherForecast.OrderDate) HeaderText="Order Date" EditType="EditType.DatePickerEdit" Format="yMd" Type="ColumnType.Date" Width="160"></GridColumn>
+    </GridColumns>
+</SfGrid>
+@code {
+    SfGrid<WeatherForecast> DefaultGrid;
+    WeatherForecast[] forecasts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = await http.GetForecastAsync();
+    }
+}
