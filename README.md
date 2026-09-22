@@ -2,7 +2,7 @@
 
 ## Overview
 
-This sample demonstrates how to retrieve data asynchronously from a service and bind the resulting records to a Syncfusion Blazor DataGrid. Instead of supplying data immediately when the page is rendered, the application loads data through an asynchronous workflow and updates the Grid after the operation completes. This pattern is commonly used when data originates from APIs, databases, or external services that require asynchronous execution before records become available for display.
+This sample demonstrates how to retrieve data asynchronously from a service and bind the resulting records to a Syncfusion [Blazor DataGrid](https://www.syncfusion.com/blazor-components/blazor-datagrid). Instead of supplying data immediately when the page is rendered, the application loads data through an asynchronous workflow and updates the Grid after the operation completes. This pattern is commonly used when data originates from APIs, databases, or external services that require asynchronous execution before records become available for display.
 
 The repository contains a dedicated Blazor application that focuses specifically on asynchronous data loading and Grid binding behavior rather than advanced Grid editing, filtering, or remote data management scenarios.
 
